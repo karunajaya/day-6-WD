@@ -1,0 +1,114 @@
+1.
+
+class Movie {
+    title: string;
+    studio: string;
+    rating: string;
+
+    // a) and b) Constructor for the class Movie
+    constructor(title: string, studio: string, rating: string = "PG") {
+        this.title = title;
+        this.studio = studio;
+        this.rating = rating;
+    }
+
+    // c) Method getPG
+    static getPG(movies: Movie[]): Movie[] {
+        return movies.filter(movie => movie.rating === "PG");
+    }
+}
+
+// d) Creating an instance of the class Movie
+const casinoRoyale = new Movie("Casino Royale", "Eon Productions", "PG-13");
+
+// Example usage
+const movie1 = new Movie("Casino Royale", "Eon Productions", "PG-13");
+const movie2 = new Movie("The Godfather", "Paramount Pictures", "R");
+const movie3 = new Movie("Finding Nemo", "Pixar", "PG");
+
+const movies = [movie1, movie2, movie3];
+const pgMovies = Movie.getPG(movies);
+
+console.log(pgMovies);
+
+a) The constructor takes title, studio, and rating as arguments and sets the properties.
+b) The constructor sets rating to "PG" by default if no rating is provided.
+c) The getPG method filters movies with a rating of "PG".
+d) An instance of Movie is created with the specified properties.
+
+2.
+
+class Circle {
+    radius: number;
+
+    constructor(radius: number = 1.0) {
+        this.radius = radius;
+    }
+
+    getArea(): number {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    getCircumference(): number {
+        return 2 * Math.PI * this.radius;
+    }
+}
+
+// Example usage:
+const circle = new Circle(5);
+console.log(circle.getArea()); // Outputs the area of the circle
+console.log(circle.getCircumference()); // Outputs the circumference of the circle
+
+3.Write a “person” class to hold all the details.
+
+class Person {
+    name: string;
+    age: number;
+    address: string;
+    phone: string;
+    email: string;
+
+    constructor(name: string, age: number, address: string, phone: string, email: string) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    getDetails(): string {
+        return `Name: ${this.name}, Age: ${this.age}, Address: ${this.address}, Phone: ${this.phone}, Email: ${this.email}`;
+    }
+}
+
+// Example usage:
+const person = new Person("John Doe", 30, "123 Main St, Springfield", "555-1234", "john.doe@example.com");
+console.log(person.getDetails());
+
+4.write a class to calculate the Uber price.
+
+class UberPriceCalculator {
+    baseFare: number;
+    costPerMinute: number;
+    costPerMile: number;
+    bookingFee: number;
+
+    constructor(baseFare: number, costPerMinute: number, costPerMile: number, bookingFee: number) {
+        this.baseFare = baseFare;
+        this.costPerMinute = costPerMinute;
+        this.costPerMile = costPerMile;
+        this.bookingFee = bookingFee;
+    }
+
+    calculatePrice(minutes: number, miles: number): number {
+        const timeCost = this.costPerMinute * minutes;
+        const distanceCost = this.costPerMile * miles;
+        const totalFare = this.baseFare + timeCost + distanceCost + this.bookingFee;
+        return totalFare;
+    }
+}
+
+// Example usage:
+const uberCalculator = new UberPriceCalculator(2.50, 0.35, 1.75, 1.00);
+const price = uberCalculator.calculatePrice(30, 10); // 30 minutes and 10 miles
+console.log(`The total price for the ride is $${price.toFixed(2)}`);
